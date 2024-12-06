@@ -9,16 +9,16 @@ def generate_random_days_and_timings(total_minutes):
     start_time = f"{start_hour}:{start_minute:02d}"
 
     days = random.choice([1, 2])
-    daysOfWeek = ['Monday', 'Tuesday', 'Wenesday', 'Thursday', 'Friday']
+    days_of_week = ['Monday', 'Tuesday', 'Wenesday', 'Thursday', 'Friday']
     if days == 1:
-        day = random.choice(daysOfWeek)
+        day = random.choice(days_of_week)
 
         # Timings
 
-        totTime = start_hour*60 + start_minute + total_minutes
+        tot_time = start_hour*60 + start_minute + total_minutes
 
-        th = totTime // 60
-        tm = totTime % 60
+        th = tot_time // 60
+        tm = tot_time % 60
 
         endTime = f"{th}:{tm:02d}"
 
@@ -30,11 +30,11 @@ def generate_random_days_and_timings(total_minutes):
 
         return json.dumps(dict)
     else:
-        day1, day2 = random.sample(daysOfWeek, 2)
+        day1, day2 = random.sample(days_of_week, 2)
         total_minutes = total_minutes // 2
-        totTime = start_hour*60 + start_minute + total_minutes
-        th = totTime // 60
-        tm = totTime % 60
+        tot_time = start_hour*60 + start_minute + total_minutes
+        th = tot_time // 60
+        tm = tot_time % 60
 
         endTime = f"{th}:{tm:02d}"
 
@@ -65,7 +65,7 @@ with open(output_file, "w") as file:
             prof_name = f"Prof {prof_index + 1}"
 
             total_hours = random.choice([2, 3, 4])
-            timings = generate_random_days_and_timings(total_hours)
+            timings = generate_random_days_and_timings(total_hours*60)
             
             file.write(
                 f"INSERT INTO `available_courses` (`c_code`, `section`, `prof_name`, `timings`) VALUES ('{course}', {section}, '{prof_name}', '{timings}');\n"
