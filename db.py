@@ -95,27 +95,7 @@ def print_my_completed_courses(id):
 def print_courses_i_can_take(id):
     db = sqlite3.connect('schedule.db')
     cursor = db.cursor()
-    cursor.execute("""
-        SELECT ac.*
-        FROM available_courses ac
-        JOIN courses c ON ac.c_code = c.c_code
-        JOIN program_requirements pr ON pr.c_code = c.c_code
-        JOIN student_programs sp ON sp.p_name = pr.p_name
-        WHERE sp.s_num = ?  -- replace ? with the student's number
-          AND NOT EXISTS (
-              SELECT 1
-              FROM completed_courses cc
-              WHERE cc.s_num = sp.s_num
-              AND cc.c_code = ac.c_code
-          )
-          AND NOT EXISTS (
-              SELECT 1
-              FROM prerequisites p
-              LEFT JOIN completed_courses cc ON p.prerequisite_name = cc.c_code 
-              WHERE p.c_code = ac.c_code 
-              AND cc.s_num != sp.s_num
-          );
-    """, (id,))
+    cursor.execute("SELECT ac.* FROM available_courses ac JOIN courses c ON ac.c_code = c.c_code JOIN program_requirements pr ON pr.c_code = c.c_code JOIN student_programs sp ON sp.p_name = pr.p_name WHERE sp.s_num = ? AND NOT EXISTS ( SELECT 1 FROM completed_courses cc WHERE cc.s_num = sp.s_num AND cc.c_code = ac.c_code ) AND NOT EXISTS ( SELECT 1 FROM prerequisites p LEFT JOIN completed_courses cc ON p.prerequisite_name = cc.c_code  WHERE p.c_code = ac.c_code  AND cc.s_num != sp.s_num );", (id,))
     student_courses = cursor.fetchall()
     db.close()
     for student_course in student_courses:
