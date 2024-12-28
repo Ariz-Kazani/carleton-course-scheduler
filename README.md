@@ -1,3 +1,3 @@
-# 3005 Final Project
+# Course Scheduler 
 
-Prototype for an auto scheduler, that makes you class schedule.
+This is the beginning of the full project
