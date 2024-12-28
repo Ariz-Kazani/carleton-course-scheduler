@@ -1,3 +1,3 @@
-# Course Scheduler 
+# Course Scheduler Prototype
 
-This is the beginning of the full project
+This is the prototype for the course scheduler, It was submitted as the COMP 3005 final project.
