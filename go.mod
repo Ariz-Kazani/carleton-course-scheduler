@@ -1,4 +1,4 @@
-module github.com/Ariz-Kazani/carleton-course-scheduler
+module carleton-course-scheduler
 
 go 1.23
 
