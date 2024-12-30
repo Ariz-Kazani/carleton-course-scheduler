@@ -5,9 +5,13 @@ import (
 	"fmt"
 )
 
+/**
+This function just validates that everything in the python version is working when ported over to go
+*/
+
 func main() {
 
-	database.Connect()
+	db := database.Connect()
 	var id int
 	var choice int = -1
 	var testOutput string
@@ -34,7 +38,7 @@ func main() {
 		switch choice {
 		case 0:
 		case 1:
-			testOutput = database.GetAllCourses()
+			testOutput = database.GetAllCourses(db)
 		case 2:
 			testOutput = database.GetAllPrograms()
 		case 3:
@@ -56,5 +60,5 @@ func main() {
 		}
 	}
 
-	database.Close()
+	database.Close(db)
 }
