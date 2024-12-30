@@ -60,7 +60,7 @@ func Connect() *sql.DB {
 	fmt.Println("Connecting to the database...")
 
 	// TODO: add the database password and name with env?
-	var source string = "username:password@tcp(127.0.0.1:3306)/name"
+	var source string = "root:@tcp(127.0.0.1:3306)/test"
 	db, err := sql.Open("mysql", source)
 
 	if err != nil {

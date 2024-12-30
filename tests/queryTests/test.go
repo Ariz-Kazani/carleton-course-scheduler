@@ -20,6 +20,7 @@ func main() {
 	fmt.Scanln(&id)
 
 	for choice != 0 {
+		fmt.Println("")
 		fmt.Println("Choose a number for the following: ")
 		fmt.Println("")
 		fmt.Println("Choose General Tests")
@@ -32,6 +33,9 @@ func main() {
 		fmt.Println("5: List my program")
 		fmt.Println("6: List my completed courses")
 		fmt.Println("7: Get all courses I can take")
+		fmt.Println("")
+		fmt.Println("0: Exit")
+		fmt.Println("")
 
 		fmt.Scan(&choice)
 
