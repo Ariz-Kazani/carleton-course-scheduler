@@ -2,9 +2,12 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"os"
 	"sort"
+	"strings"
+	"time"
 )
 
 /**
@@ -86,4 +89,40 @@ func Migrate(db *sql.DB) {
 		db.Exec("INSERT INTO migrations (name) VALUES (?)", fileName)
 	}
 
+}
+
+func MakeMigration() {
+	var folderName string = "internal/database/migrations"
+	var fileName string
+	for {
+		fmt.Print("Enter a filename (max 100 characters): ")
+		fmt.Scanln(&fileName)
+
+		if len(fileName) > 0 && len(fileName) < 101 {
+			break
+		}
+
+		fmt.Print("Invalid Length")
+	}
+
+	fileName = time.Now().Format(time.DateTime) + " " + fileName + ".sql"
+	fileName = strings.ReplaceAll(fileName, " ", "_")
+	fileName = strings.ReplaceAll(fileName, ":", "_")
+	fileName = strings.ReplaceAll(fileName, "-", "_")
+
+	fmt.Print("This is the filename: ", fileName)
+
+	err := os.MkdirAll(folderName, 0755)
+
+	if err != nil {
+		log.Fatal("Error creating folder: ", err)
+	}
+
+	file, err := os.Create(folderName + "/" + fileName)
+
+	if err != nil {
+		log.Fatal("Error creating file")
+	}
+
+	file.Close()
 }
