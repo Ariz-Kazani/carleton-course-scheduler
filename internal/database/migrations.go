@@ -63,6 +63,7 @@ func Migrate(db *sql.DB) {
 	}
 
 	if len(files) == len(items) {
+		fmt.Println("No new Migrations!")
 		return
 	}
 
@@ -83,12 +84,13 @@ func Migrate(db *sql.DB) {
 		_, err = db.Exec(string(file))
 
 		if err != nil {
-			log.Fatal("Error EXECUTING QUERY for the file:", fileName)
+			log.Fatal("Error EXECUTING QUERY for the file: ", fileName, " Error: ", err)
 		}
 
-		db.Exec("INSERT INTO migrations (name) VALUES (?)", fileName)
+		db.Exec("INSERT INTO migrations (name) VALUES (?)", files[i].Name())
 	}
 
+	fmt.Println("Migrations COMPLETED!")
 }
 
 func MakeMigration() {
