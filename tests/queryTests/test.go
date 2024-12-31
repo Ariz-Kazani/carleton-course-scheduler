@@ -16,6 +16,8 @@ func main() {
 	var choice int = -1
 	var testOutput string
 
+	database.Migrate(db)
+
 	fmt.Println("Enter your ID")
 	fmt.Scanln(&id)
 
