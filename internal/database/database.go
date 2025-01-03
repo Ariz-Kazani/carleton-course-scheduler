@@ -96,8 +96,23 @@ func GetAllCourses(db *sql.DB) string {
 	return "DONE!"
 }
 
-func GetAllPrograms() string {
-	return "All Programs"
+func GetAllPrograms(db *sql.DB) string {
+	rows, err := db.Query("SELECT * FROM programs")
+	if err != nil {
+		return "ERROR QUERYING"
+	}
+
+	for rows.Next() {
+		var program Programs
+		err := rows.Scan(&program.name, &program.pType, &program.faculty)
+		if err == nil {
+			fmt.Println("Faculty: ", program.faculty)
+			fmt.Println("Name:    ", program.name)
+			fmt.Println("Faculty: ", program.pType)
+		}
+	}
+
+	return "DONE!"
 }
 
 func GetAllAvailableCourses() string {
