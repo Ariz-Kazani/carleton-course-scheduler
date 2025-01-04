@@ -1,6 +1,9 @@
 
 -- THIS IS TEST DATA FOR THE DB
 -- This file is very similar to the one in examples but has been updated for mysql
+
+start transaction;
+
 INSERT INTO `student` (`name`) VALUES ('Ariz');
 INSERT INTO `student` (`name`) VALUES ('Allen');
 INSERT INTO `student` (`name`) VALUES ('Alex');
@@ -148,25 +151,25 @@ INSERT INTO `completed_courses` (`s_num`, `c_code`, `grade`) VALUES (2, 'PHYS 10
 
 -- Prerequisites
 
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 103', 'COMP 101', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 104', 'COMP 101', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 105', 'COMP 102', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 106', 'COMP 102 ', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 103', 'COMP 101', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 104', 'COMP 101', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 105', 'COMP 102', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 106', 'COMP 102 ', 50);
 
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 200', 'COMP 103', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 201', 'COMP 103', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 202', 'COMP 101', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 203', 'COMP 104', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 204', 'COMP 105', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 200', 'COMP 103', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 201', 'COMP 103', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 202', 'COMP 101', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 203', 'COMP 104', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 204', 'COMP 105', 50);
 
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 205', 'COMP 202', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('COMP 206', 'COMP 204', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 205', 'COMP 202', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('COMP 206', 'COMP 204', 50);
 
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('MATH 102', 'MATH 101', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('MATH 103', 'MATH 101', 50);
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('MATH 104', 'MATH 101', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('MATH 102', 'MATH 101', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('MATH 103', 'MATH 101', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('MATH 104', 'MATH 101', 50);
 
-INSERT INTO 'prerequisites' ('c_code', 'prerequisite_code', 'min_grade') VALUES ('PHYS 101', 'PHYS 100', 50);
+INSERT INTO `prerequisites` (`code`, `prerequisite_code`, `min_grade`) VALUES ('PHYS 101', 'PHYS 100', 50);
 
 
 -- Available courses for this semester
@@ -261,3 +264,5 @@ INSERT INTO `available_courses` (`c_code`, `section`, `prof_name`, `timings`) VA
 INSERT INTO `available_courses` (`c_code`, `section`, `prof_name`, `timings`) VALUES ('COMP 206', 1, 'Prof 30', '{"days": ["Monday"], "start_time": "15:30", "end_time": "17:30"}');
 INSERT INTO `available_courses` (`c_code`, `section`, `prof_name`, `timings`) VALUES ('COMP 206', 2, 'Prof 30', '{"days": ["Tuesday", "Wenesday"], "start_time": "15:30", "end_time": "17:00"}');
 INSERT INTO `available_courses` (`c_code`, `section`, `prof_name`, `timings`) VALUES ('COMP 206', 3, 'Prof 30', '{"days": ["Monday", "Wenesday"], "start_time": "16:30", "end_time": "17:30"}');
+
+commit;
