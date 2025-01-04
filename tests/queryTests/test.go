@@ -46,7 +46,7 @@ func main() {
 		case 1:
 			testOutput = database.GetAllCourses(db)
 		case 2:
-			testOutput = database.GetAllPrograms()
+			testOutput = database.GetAllPrograms(db)
 		case 3:
 			testOutput = database.GetAllAvailableCourses()
 		case 4:
