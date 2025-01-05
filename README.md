@@ -4,6 +4,7 @@ This is the beginning of the full project
 
 # PLAN FOR BUILDING THE PROJECT
 1. Get database and queries working
+- NEW MAKE AN ORM?
 2. Write logic to generate the schedules
 3. build out frontend
 4. write the apis
