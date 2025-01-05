@@ -19,7 +19,7 @@ run:
 	$(GO) run $(MAIN_SRC)
 
 run-queryTests:
-	$(BIN_DIR)/migration-tools
+	$(BIN_DIR)/queryTests
 
 run-migration:
 	$(BIN_DIR)/migration-tools run

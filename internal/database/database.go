@@ -42,14 +42,14 @@ type Tutorials struct {
 }
 
 type Prerequisites struct {
-	code        string
-	pCode       string
-	minGrade    uint8
-	programName string
+	code     string
+	pCode    string
+	minGrade uint8
 }
 
 type StudentPrograms struct {
 	studentNum uint32
+	pCode      string
 }
 
 /**
@@ -76,6 +76,9 @@ func Connect() *sql.DB {
 	return db
 }
 
+/*
+the next 5 things could be abstracted into one function... time to make my own orm?
+*/
 func GetAllCourses(db *sql.DB) string {
 	rows, err := db.Query("SELECT * FROM courses")
 	if err != nil {
@@ -90,6 +93,7 @@ func GetAllCourses(db *sql.DB) string {
 			fmt.Println("Faculty: ", course.faculty)
 			fmt.Println("Name:    ", course.name)
 			fmt.Println("Credits: ", course.credits)
+			fmt.Println("")
 		}
 	}
 
@@ -109,33 +113,86 @@ func GetAllPrograms(db *sql.DB) string {
 			fmt.Println("Faculty: ", program.faculty)
 			fmt.Println("Name:    ", program.name)
 			fmt.Println("Faculty: ", program.pType)
+			fmt.Println("")
 		}
 	}
 
 	return "DONE!"
 }
 
-func GetAllAvailableCourses() string {
-	return "All available Courses"
+func GetAllAvailableCourses(db *sql.DB) string {
+	rows, err := db.Query("SELECT * FROM available_courses")
+	if err != nil {
+		return "ERROR GETTING AVAILABLE COURSES"
+	}
+
+	for rows.Next() {
+		var cc AvailableCourses
+		err := rows.Scan(&cc.crn, &cc.code, &cc.section, &cc.professor, &cc.timings)
+
+		if err == nil {
+			fmt.Println("CRN:     ", cc.crn)
+			fmt.Println("Code:    ", cc.code)
+			fmt.Println("Section: ", cc.section)
+			fmt.Println("Prof:    ", cc.professor)
+			fmt.Println("Timings: ", cc.timings)
+			fmt.Println("")
+		}
+
+	}
+	return "Done"
 }
 
-func GetAllPrerequisites() string {
-	return "All pre reqs"
+func GetAllPrerequisites(db *sql.DB) string {
+	rows, err := db.Query("SELECT * FROM prerequisites")
+	if err != nil {
+		return "ERROR GETTING AVAILABLE COURSES"
+	}
+
+	for rows.Next() {
+		var p Prerequisites
+		err := rows.Scan(&p.code, &p.pCode, &p.minGrade)
+
+		if err == nil {
+			fmt.Println("code:         ", p.code)
+			fmt.Println("pre-req code: ", p.pCode)
+			fmt.Println("Min Grade:    ", p.minGrade)
+			fmt.Println("")
+		}
+
+	}
+	return "Done"
 }
 
-func GetUserPrograms() string {
-	return "Current User Programs"
+func GetUserPrograms(db *sql.DB) string {
+	rows, err := db.Query("SELECT * FROM student_programs")
+	if err != nil {
+		return "ERROR GETTING AVAILABLE COURSES"
+	}
+
+	for rows.Next() {
+		var sp StudentPrograms
+		err := rows.Scan(&sp.studentNum, &sp.pCode)
+
+		if err == nil {
+			fmt.Println("Student Num: ", sp.studentNum)
+			fmt.Println("Course Name: ", sp.pCode)
+			fmt.Println("")
+		}
+
+	}
+	return "Done"
 }
 
-func GetCoursesAvailableToUser() string {
+func GetCoursesAvailableToUser(db *sql.DB) string {
 	return "These are the courses the user can take this semester"
 }
 
-func GetUserCompletedCourses() string {
+func GetUserCompletedCourses(db *sql.DB) string {
 	return "These are all of the courses the user has completed"
 }
 
-func GetUserInProgressCourses() string {
+func GetUserInProgressCourses(db *sql.DB) string {
 	return "These are all of the courses the user is takeing before"
 }
 

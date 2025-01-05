@@ -48,15 +48,15 @@ func main() {
 		case 2:
 			testOutput = database.GetAllPrograms(db)
 		case 3:
-			testOutput = database.GetAllAvailableCourses()
+			testOutput = database.GetAllAvailableCourses(db)
 		case 4:
-			testOutput = database.GetAllPrerequisites()
+			testOutput = database.GetAllPrerequisites(db)
 		case 5:
-			testOutput = database.GetUserPrograms()
+			testOutput = database.GetUserPrograms(db)
 		case 6:
-			testOutput = database.GetUserCompletedCourses()
+			testOutput = database.GetUserCompletedCourses(db)
 		case 7:
-			testOutput = database.GetCoursesAvailableToUser()
+			testOutput = database.GetCoursesAvailableToUser(db)
 		default:
 			choice = -1
 		}
