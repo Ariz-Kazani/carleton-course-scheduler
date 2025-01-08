@@ -1,6 +1,4 @@
 <template>
-  <div>
-    <h1>My App</h1>
-    <router-view></router-view>
-  </div>
+  <!-- <router-view></router-view> -->
+  <NuxtPage />
 </template>
