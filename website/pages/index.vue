@@ -5,9 +5,11 @@ const route = useRoute()
 <template>
   <div class="landing-page">
     <Header>
-      <h1>Welcome to Carleton Course Scheduler</h1>
-      <p>Your one-stop solution for managing your courses efficiently.</p>
-      <button><NuxtLink to="/login">Login</NuxtLink></button>
+      <div>
+        <button>
+          <NuxtLink to="/login">Login</NuxtLink>
+        </button>
+      </div>
     </Header>
     <section class="features">
       <h2>Features</h2>

@@ -7,9 +7,11 @@
 
 <style lang="css" scoped>
     .header {
-        background-color: #333;
+        background-color: rgb(246, 33, 33);
         color: white;
         text-align: center;
         padding: 1rem;
+        display: flex;
+        align-items: center;
     }
 </style>
