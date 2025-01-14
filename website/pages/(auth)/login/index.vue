@@ -57,4 +57,13 @@ const login = (event: Event) => {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.login button {
+  background-color: rgb(246, 33, 33);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
 </style>

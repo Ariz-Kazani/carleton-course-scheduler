@@ -66,6 +66,7 @@ const route = useRoute()
   outline: none;
   overflow: hidden;
   font-size: 15px;
+  text-decoration: none;
 }
 
 .icon {
