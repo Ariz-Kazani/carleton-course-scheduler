@@ -1,6 +1,6 @@
 <template>
-  <div class="header">
-    <div class="header-content">
+  <div class="header-main-content">
+    <div class="header-static-content">
       <NuxtLink to="/" class="header-link">
         THIS IS THE HEADER
       </NuxtLink>
@@ -12,7 +12,7 @@
 </template>
 
 <style lang="css" scoped>
-.header {
+.header-main-content {
   background-color: rgb(246, 33, 33);
   color: white;
   text-align: center;
@@ -23,11 +23,12 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.header-content {
+.header-main-content .header-static-content {
+  width: 100%;
   display: flex;
 }
 
-.header-link {
+.header-main-content .header-static-content .header-link {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -37,9 +38,10 @@
   gap: 10px;
 }
 
-.slot-content {
+.header-main-content .slot-content {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
 
 </style>

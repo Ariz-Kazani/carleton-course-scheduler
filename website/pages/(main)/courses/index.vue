@@ -19,7 +19,7 @@
       </button>
     </div>
   </Header>
-  <h1>This is the main page</h1>
+  <h1>This is the course content</h1>
   <ul>
     <li>
       Here we will have a list of all the pages
